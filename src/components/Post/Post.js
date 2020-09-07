@@ -44,8 +44,11 @@ const handelClick = (post) => {
     history.push(url);
 }
     return (
-        <Grid container spacing={5} >
+        <Grid container spacing={5} direction="row"
+        justify="center"
+        alignItems="center" >
             <Grid item  xs={12} sm= {3}>
+            
         <Card className={classes.root} variant="outlined">
         <CardContent>
           

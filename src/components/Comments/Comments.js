@@ -3,20 +3,18 @@ import { useHistory } from 'react-router-dom';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
+
 import CardContent from '@material-ui/core/CardContent';
 
 import Typography from '@material-ui/core/Typography';
+import { Grid } from '@material-ui/core';
+import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles({
     root: {
       minWidth: 275,
     },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
-    },
+    
     title: {
       fontSize: 14,
     },
@@ -27,40 +25,46 @@ const useStyles = makeStyles({
 
 const Comments = (props) => {
     const classes = useStyles();
-    const {name, email, body} = props.comment;
+    const {name, email, body, id, postId} = props.comment;
     const history = useHistory();
     const handelClick = (comment) => {
         const url = `/comments/${comment}`
         history.push(url)
     }
     return (
+        <Grid container spacing={10} direction="row"
+        justify="center"
+        alignItems="center" >
+            <Grid item  xs={12} sm= {6}>
 
+            <Grid item>
+            <Avatar alt="Remy Sharp" src="../image/1.jpg">{postId}  </Avatar>
+            </Grid>
         <Card className={classes.root}>
+
             <CardContent>
                 <Typography className={classes.title} color="textSecondary" gutterBottom>
-                Word of the Day
+                 postID {postId}; userID {id} 
+                
                 </Typography>
+                comments:
                 <Typography variant="h5" component="h2">
-                 {name}
+                 
+                
+               " {body}"
                 </Typography>
                 <Typography className={classes.pos} color="textSecondary">
-                 {email} 
+                 Name: {name}
                 </Typography>
                 <Typography variant="body2" component="p">
-                comments:
-                <br />
-               " {body}"
+                {email}
                 </Typography>
             </CardContent>
       
     </Card>
-
-        // <div>
-
-        //     This is comments : {body}
-        //     <p> name: {name} </p>
-        //     <p> email: {email} </p>
-        // </div>
+    </Grid>
+    </Grid>
+    
     );
 };
 
