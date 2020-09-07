@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header/Header';
+import PostDetail from './components/PostDetail/PostDetail';
 
 import {
   BrowserRouter as Router,
@@ -9,19 +10,26 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Post from './components/Post/Post';
+import NoMatch from './components/NoMatch/NoMatch';
+import Home from './components/Home/Home';
 
 function App() {
   return (
-    <div className="App">
+    <div >
       <Header></Header>
       <Router>
         <Switch>
-          <Route exact path="/">
-            <Post></Post>
+          <Route  path="/home">
+            <Home></Home>
           </Route>
-          <Route  path="/post">
-            
+          <Route  path="/post/:postId">
+            <PostDetail/>
+          </Route>
+          <Route exact path="/">
+            <Home/>
+          </Route>
+          <Route  path="*">
+            <NoMatch/>
           </Route>
         </Switch>
       </Router>

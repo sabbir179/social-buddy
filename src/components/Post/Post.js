@@ -1,22 +1,67 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PostDetail from '../PostDetail/PostDetail';
 import Comments from '../Comments/Comments';
+import NoteIcon from '@material-ui/icons/Note';
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import { useHistory } from 'react-router-dom';
+import { Grid } from '@material-ui/core';
 
-const Post = () => {
-    const [post, setPost] = useState([]);
+const useStyles = makeStyles({
+    width: '200px',
+    root: {
+      minWidth: 275,
+     
+    },
+    bullet: {
+      display: 'inline-block',
+      margin: '0 2px',
+      transform: 'scale(0.8)',
+    },
+    title: {
+      fontSize: 14,
+    },
+    pos: {
+      marginBottom: 12,
+    },
+  });
 
-    useEffect(() =>{
-        fetch('https://jsonplaceholder.typicode.com/posts')
-        .then(res => res.json())
-        .then(data =>setPost(data))
-    },[])
 
+const Post = (props) => {
+   
+const classes = useStyles();
+
+const {userId, id, title, body} = props.post;
+
+const history = useHistory();
+
+const handelClick = (post) => {
+    const url = `/post/${post}`;
+    history.push(url);
+}
     return (
-        <div>
-           <h1>post: {post.length} </h1>
-            <PostDetail></PostDetail>
-            <Comments></Comments>
-        </div>
+        <Grid container spacing={3} >
+            <Grid item flexgrow= {1} xs={3}>
+        <Card className={classes.root} variant="outlined">
+        <CardContent>
+          
+          <Typography variant="body2" component="p">
+              <NoteIcon style={{color:'lightgrey'}} > </NoteIcon> User Id: {userId}
+            
+            <br />
+            {title}
+          </Typography>
+        </CardContent>
+        <CardActions>
+          <Button onClick= {()=> handelClick(id)} size="small">Read more</Button>
+        </CardActions>
+      </Card>
+      </Grid>
+      </Grid>
     );
 };
 
