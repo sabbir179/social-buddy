@@ -1,0 +1,7 @@
+.posts{
+    width: 600px;
+    margin-left: 70px;
+    padding: 20px;
+    border:1px solid red; 
+    border-round: 20px;
+}

@@ -12,9 +12,9 @@ import { useHistory } from 'react-router-dom';
 import { Grid } from '@material-ui/core';
 
 const useStyles = makeStyles({
-    width: '200px',
+    // width: '200px',
     root: {
-      minWidth: 275,
+      minWidth: 200,
      
     },
     bullet: {
@@ -44,8 +44,8 @@ const handelClick = (post) => {
     history.push(url);
 }
     return (
-        <Grid container spacing={3} >
-            <Grid item flexgrow= {1} xs={3}>
+        <Grid container spacing={5} >
+            <Grid item  xs={12} sm= {3}>
         <Card className={classes.root} variant="outlined">
         <CardContent>
           
@@ -53,7 +53,7 @@ const handelClick = (post) => {
               <NoteIcon style={{color:'lightgrey'}} > </NoteIcon> User Id: {userId}
             
             <br />
-            {title}
+            <h4>{title}</h4> 
           </Typography>
         </CardContent>
         <CardActions>
