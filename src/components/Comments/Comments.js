@@ -38,7 +38,7 @@ const Comments = (props) => {
             <Grid item  xs={12} sm= {6}>
 
             <Grid item>
-            <Avatar alt="Remy Sharp" src="../image/1.jpg">{postId}  </Avatar>
+            <Avatar alt="Remy Sharp" src="../image/1.jpg"> {id} </Avatar>
             </Grid>
         <Card className={classes.root}>
 
